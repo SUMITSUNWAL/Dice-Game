@@ -1,12 +1,26 @@
 import { useState } from "react"
 
-const Brainy = () => {
+const Brainy = ({pictureValue,setPictureValue}) => {
   const [hide,setHide] = useState(false);
+
+  function randomNumber (){
+    let number =  Math.floor(Math.random() * 6) + 1;
+    console.log(number);
+     return number;
+  }
+  
+  function generate(){
+    const data = randomNumber();
+    setPictureValue(data);
+  }
+
   return (
     <div>
     <div className="flex flex-col justify-center items-center mt-[70px]">
     <div>
-      <img src="/images/D1.png" className="w-[200px]"></img>
+      <img src={`/images/D${pictureValue}.png`} className="w-[200px]"
+      onClick={generate}></img>
+
       <p className="text-[20px] font-bold ml-2">Click on Dice to roll</p>
     </div>
     <div className="flex flex-col mt-10 gap-5">
